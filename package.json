@@ -1,6 +1,6 @@
 {
-  "name": "spacesvr",
-  "version": "2.1.2",
+  "name": "spacesvr-websessions",
+  "version": "0.0.0",
   "private": true,
   "description": "A standardized reality for future of the 3D Web",
   "keywords": [
@@ -10,12 +10,12 @@
     "environment",
     "webvr"
   ],
-  "author": "Muse",
+  "author": "websessions",
   "license": "MIT",
-  "homepage": "https://muse.place",
+  "homepage": "https://websessions.co/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spacesvr/spacesvr.git"
+    "url": "git+https://github.com/websessions/spacesvr-websessions"
   },
   "main": "main.cjs.js",
   "module": "main.js",

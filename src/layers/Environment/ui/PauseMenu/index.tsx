@@ -26,7 +26,7 @@ type PauseMenuProps = {
 };
 
 export default function PauseMenu(props: PauseMenuProps) {
-  const { title = "spacesvr", pauseMenuItems = [], dev = false } = props;
+  const { title = "websessions", pauseMenuItems = [], dev = false } = props;
 
   const { paused, setPaused, menuItems, device } = useEnvironment();
   const layout = useKeyboardLayout();
@@ -45,26 +45,26 @@ export default function PauseMenu(props: PauseMenuProps) {
     );
   }
 
-  const PAUSE_ITEMS: PauseItem[] = [
-    ...pauseMenuItems,
-    {
-      text: "v2.1.2",
-      link: "https://www.npmjs.com/package/spacesvr",
-    },
-    ...menuItems,
-  ];
+  // const PAUSE_ITEMS: PauseItem[] = [
+  //   ...pauseMenuItems,
+  //   {
+  //     text: "v2.1.2",
+  //     link: "https://www.npmjs.com/package/spacesvr",
+  //   },
+  //   ...menuItems,
+  // ];
 
   return (
     <Container paused={paused}>
-      <ClickContainer onClick={closeOverlay} />
+      {/* <ClickContainer onClick={closeOverlay} /> */}
       <Window>
-        <Title>{title}</Title>
+        <Title>{/* {title} */}</Title>
         <Instructions>
-          <p>Move – {device.mobile ? "Joystick" : layout}</p>
-          <p>Look – {device.mobile ? "Drag" : "Mouse"}</p>
-          <p>Pause – {device.mobile ? "Menu Button" : "Esc"}</p>
+          <p>Move ---– {device.mobile ? "Joystick" : layout}</p>
+          <p>Look ---– {device.mobile ? "Drag" : "Mouse"}</p>
+          <p>Pause ---– {device.mobile ? "Menu Button" : "Esc"}</p>
         </Instructions>
-        <Actions>
+        {/* <Actions>
           {PAUSE_ITEMS.map((item) =>
             item.link ? (
               <MenuLink key={item.text} href={item.link}>
@@ -76,11 +76,11 @@ export default function PauseMenu(props: PauseMenuProps) {
               </MenuButton>
             )
           )}
-        </Actions>
+        </Actions> */}
+        <Continue onClick={closeOverlay} color={continueIdea.getHex()}>
+          ENTER
+        </Continue>
       </Window>
-      <Continue onClick={closeOverlay} color={continueIdea.getHex()}>
-        continue
-      </Continue>
     </Container>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const globalStyles = css`
   @font-face {
     font-family: "Quicksand";
-    src: url("https://d27rt3a60hh1lx.cloudfront.net/fonts/Quicksand_Bold.otf");
+    src: url("https://cdn.websessions.co/select/fonts/FTBasicSpace-Regular.woff2");
   }
 
   html {
@@ -23,9 +23,9 @@ const globalStyles = css`
     touch-action: pan-x pan-y;
     -webkit-overflow-scrolling: touch;
     font-family: "Quicksand", sans-serif;
-    font-size: 27px;
+    font-size: 18px;
     @media screen and (max-width: 500px) {
-      font-size: 24px;
+      font-size: 16px;
     }
   }
 `;

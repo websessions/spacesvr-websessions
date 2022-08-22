@@ -7,8 +7,12 @@ const Element = styled.div`
   left: 50%;
   z-index: 1;
   mix-blend-mode: difference;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #ffffff;
 
-  &::before {
+  /* &::before {
     content: "";
     position: absolute;
     height: 16px;
@@ -26,7 +30,7 @@ const Element = styled.div`
     transform: translate(-50%, -50%);
     border-radius: 6px;
     background: #ffffff;
-  }
+  } */
 `;
 
 const Crosshair = () => {
