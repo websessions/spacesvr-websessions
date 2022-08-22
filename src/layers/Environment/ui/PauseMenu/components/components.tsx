@@ -28,61 +28,59 @@ export const ClickContainer = styled.div`
 `;
 
 export const Window = styled.div`
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  height: 100%;
   padding: 20px 20px;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
-  border-radius: 10px;
-  background-color: white;
-  background-position: center;
-  background-size: cover;
-  box-sizing: border-box;
-
-  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+  /* background-color: #00000011;
+  backdrop-filter: blur(2px); */
+  background: rgb(255 255 255 / 20%);
+  backdrop-filter: blur(7px);
+  /* box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3); */
 `;
 
 export const Continue = styled.div<{ color: string }>`
-  width: 90%;
-  max-width: 400px;
-  height: auto;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.3em;
-  font-family: "Quicksand", sans-serif;
-  transition: opacity 0.15s linear;
-  margin-top: 20px;
-  background: ${(props) => props.color};
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: linear-gradient(
+    281.48deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 96.42%
+  );
+  border: 0.5px solid #ffffff;
+  filter: drop-shadow(0px 4px 24px rgba(255, 255, 255, 0.4));
+  /* backdrop-filter: blur(16px); */
+  margin: 0 auto;
+  z-index: 10000;
   color: white;
-  //border: 2px solid black;
-  line-height: 1em;
-  padding: 12px 0;
-  border-radius: 10px;
-  :hover {
-    opacity: 0.5;
-  }
+  cursor: pointer;
+  font-size: 13px;
 
-  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+  &:hover {
+    transition: fill 0.4s ease-in-out;
+    fill: #78e41f;
+  }
 `;
 
 export const Instructions = styled.div`
   width: 100%;
   height: auto;
   margin: 30px 0;
-  font-size: 0.7em;
+  font-size: 18px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
 
   & > p {
-    margin: 0.2em;
+    margin: 1em 0;
   }
 `;
 

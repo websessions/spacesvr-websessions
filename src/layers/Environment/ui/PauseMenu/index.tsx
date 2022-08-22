@@ -21,7 +21,7 @@ type PauseMenuProps = {
 };
 
 export default function PauseMenu(props: PauseMenuProps) {
-  const { title = "spacesvr", pauseMenuItems = [], dev = false } = props;
+  const { title = "websessions", pauseMenuItems = [], dev = false } = props;
 
   const { paused, setPaused, menuItems, device } = useEnvironment();
   const layout = useKeyboardLayout();
@@ -37,47 +37,50 @@ export default function PauseMenu(props: PauseMenuProps) {
     []
   );
 
-  const PAUSE_ITEMS: MenuItem[] = [
-    ...pauseMenuItems,
-    {
-      text: "v2.10.6",
-      link: "https://www.npmjs.com/package/spacesvr",
-    },
-    ...menuItems,
-  ];
+  if (dev) {
+    return (
+      <Container paused={paused} dev={true}>
+        <ClickContainer onClick={closeOverlay} />
+      </Container>
+    );
+  }
+
+  // const PAUSE_ITEMS: PauseItem[] = [
+  //   ...pauseMenuItems,
+  //   {
+  //     text: "v2.1.2",
+  //     link: "https://www.npmjs.com/package/spacesvr",
+  //   },
+  //   ...menuItems,
+  // ];
 
   return (
-    <Container paused={paused} dev={dev}>
-      <ClickContainer onClick={closeOverlay} />
-      {!dev && (
-        <>
-          <Window>
-            <Title>{title}</Title>
-            <Instructions>
-              <p>Move – {device.mobile ? "Joystick" : layout}</p>
-              <p>Look – {device.mobile ? "Drag" : "Mouse"}</p>
-              <p>Pause – {device.mobile ? "Menu Button" : "Esc"}</p>
-              <p>Cycle Tool – {device.mobile ? "Edge Swipe" : "Tab"}</p>
-            </Instructions>
-            <Actions>
-              {PAUSE_ITEMS.map((item) =>
-                item.link ? (
-                  <MenuLink key={item.text} href={item.link} target="_blank">
-                    {item.text}
-                  </MenuLink>
-                ) : (
-                  <MenuButton key={item.text} onClick={item.action}>
-                    {item.text}
-                  </MenuButton>
-                )
-              )}
-            </Actions>
-          </Window>
-          <Continue onClick={closeOverlay} color={hex}>
-            continue
-          </Continue>
-        </>
-      )}
+    <Container paused={paused}>
+      {/* <ClickContainer onClick={closeOverlay} /> */}
+      <Window>
+        <Title>{/* {title} */}</Title>
+        <Instructions>
+          <p>Move ---– {device.mobile ? "Joystick" : layout}</p>
+          <p>Look ---– {device.mobile ? "Drag" : "Mouse"}</p>
+          <p>Pause ---– {device.mobile ? "Menu Button" : "Esc"}</p>
+        </Instructions>
+        {/* <Actions>
+          {PAUSE_ITEMS.map((item) =>
+            item.link ? (
+              <MenuLink key={item.text} href={item.link}>
+                {item.text}
+              </MenuLink>
+            ) : (
+              <MenuButton key={item.text} onClick={item.action}>
+                {item.text}
+              </MenuButton>
+            )
+          )}
+        </Actions> */}
+        <Continue onClick={closeOverlay} color={'black'}>
+          ENTER
+        </Continue>
+      </Window>
     </Container>
   );
 }
