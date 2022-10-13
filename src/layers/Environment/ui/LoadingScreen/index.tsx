@@ -3,6 +3,7 @@ import { keyframes } from "@emotion/react";
 import { useControlledProgress } from "./logic/loading";
 // import { useProgress } from "@react-three/drei";
 import { motion, useScroll, useSpring } from "framer-motion";
+import React, { useState, useEffect } from "react";
 
 const float = keyframes`
   0% {
@@ -92,6 +93,15 @@ const Wrapper = styled.div`
 `;
 
 export default function LoadingScreen() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const progress = useControlledProgress();
   // const { progress, total } = useProgress();
   const { scrollYProgress } = useScroll();
@@ -105,7 +115,14 @@ export default function LoadingScreen() {
     <Container finished={progress === 100}>
       <Wrapper>
         <ProgressBar style={{ scaleX }} />
-        <Text>{Math.round(progress)}%</Text>
+        <Text>
+          {/* {Math.round(progress)}% */}
+          {progress === 100
+            ? "Done"
+            : seconds % 2
+            ? Math.round(progress) + "%"
+            : "Experience Loading"}
+        </Text>
       </Wrapper>
     </Container>
   );
