@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import { useControlledProgress } from "./logic/loading";
+// import { useControlledProgress } from "./logic/loading";
 import { useProgress } from "@react-three/drei";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 const float = keyframes`
   0% {
@@ -16,17 +17,14 @@ const float = keyframes`
     transform: translatey(0px);
   }
 `;
+
 const grow = keyframes`
   0% {
-    opacity: 0.8;
-  }
-
-  50% {
-    opacity: 0.2;
+    opacity: 0;
   }
 
   100% {
-    opacity: 0.8;
+    opacity: 1;
   }
 `;
 
@@ -49,7 +47,19 @@ const Container = styled.div<{ finished: boolean }>`
 `;
 
 const Text = styled.div`
-  animation: ${float} 7s ease-in-out infinite;
+  /* animation: ${float} 7s ease-in-out infinite; */
+  animation: ${grow} 1.2s ease-in-out infinite;
+`;
+
+const ProgressBar = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: black;
+  transform-origin: 0%;
+  z-index: 999999999999;
 `;
 
 const Wrapper = styled.div`
@@ -74,21 +84,27 @@ const Wrapper = styled.div`
       rgba(0, 0, 0, 0.35) 0%,
       transparent 80%
     ); */
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    /* -webkit-transition-duration: 0.3s; */
+    /* transition-duration: 0.3s; */
     -webkit-transition-property: transform, opacity;
     transition-property: transform, opacity;
-    animation: ${grow} 7s ease-in-out infinite;
   }
 `;
 
 export default function LoadingScreen() {
   // const progress = useControlledProgress();
   const { progress, total } = useProgress();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <Container finished={progress === 100}>
       <Wrapper>
+        <ProgressBar style={{ scaleX }} />
         <Text>{Math.round(progress)}%</Text>
       </Wrapper>
     </Container>
