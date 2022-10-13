@@ -54,6 +54,7 @@
     "@react-three/fiber": "^8.0.22",
     "@react-three/xr": "^4.0.1",
     "culori": "^0.18.2",
+    "framer-motion": "^7.5.3",
     "nipplejs": "0.8.1",
     "node-fetch": "^2.6.1",
     "peerjs": "^1.4.6",
