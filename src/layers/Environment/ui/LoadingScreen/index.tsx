@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { useControlledProgress } from "./logic/loading";
+import { useProgress } from "@react-three/drei";
 
 const float = keyframes`
   0% {
@@ -62,7 +63,7 @@ const Wrapper = styled.div`
     left: 5%;
     height: 10px;
     width: 90%;
-    background: -webkit-radial-gradient(
+    /* background: -webkit-radial-gradient(
       center,
       ellipse,
       rgba(0, 0, 0, 0.35) 0%,
@@ -72,7 +73,7 @@ const Wrapper = styled.div`
       ellipse at center,
       rgba(0, 0, 0, 0.35) 0%,
       transparent 80%
-    );
+    ); */
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     -webkit-transition-property: transform, opacity;
@@ -82,7 +83,8 @@ const Wrapper = styled.div`
 `;
 
 export default function LoadingScreen() {
-  const progress = useControlledProgress();
+  // const progress = useControlledProgress();
+  const { progress, total } = useProgress();
 
   return (
     <Container finished={progress === 100}>
