@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-// import { useControlledProgress } from "./logic/loading";
-import { useProgress } from "@react-three/drei";
+import { useControlledProgress } from "./logic/loading";
+// import { useProgress } from "@react-three/drei";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 const float = keyframes`
@@ -92,8 +92,8 @@ const Wrapper = styled.div`
 `;
 
 export default function LoadingScreen() {
-  // const progress = useControlledProgress();
-  const { progress, total } = useProgress();
+  const progress = useControlledProgress();
+  // const { progress, total } = useProgress();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
