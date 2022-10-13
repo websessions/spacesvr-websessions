@@ -49,7 +49,7 @@ const Container = styled.div<{ finished: boolean }>`
 
 const Text = styled.div`
   /* animation: ${float} 7s ease-in-out infinite; */
-  animation: ${grow} 1.2s ease-in-out infinite;
+  /* animation: ${grow} 1.2s ease-in-out infinite; */
 `;
 
 const ProgressBar = styled(motion.div)`
@@ -93,14 +93,16 @@ const Wrapper = styled.div`
 `;
 
 export default function LoadingScreen() {
-  const [seconds, setSeconds] = useState(0);
+  // const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1);
+      // setSeconds((seconds) => seconds + 1);
+      setSeconds(!seconds);
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   const progress = useControlledProgress();
   // const { progress, total } = useProgress();
@@ -119,7 +121,7 @@ export default function LoadingScreen() {
           {/* {Math.round(progress)}% */}
           {progress === 100
             ? "Done"
-            : seconds % 2
+            : seconds
             ? Math.round(progress) + "%"
             : "Experience Loading"}
         </Text>
