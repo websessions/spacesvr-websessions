@@ -52,8 +52,8 @@ const Text = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  animation: ${grow} 1.2s ease-in-out infinite;
   /* animation: ${float} 7s ease-in-out infinite; */
-  /* animation: ${grow} 1.2s ease-in-out infinite; */
 `;
 
 const ProgressBar = styled(motion.div)`
