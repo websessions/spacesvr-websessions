@@ -8,7 +8,7 @@ import { useProgress } from "@react-three/drei";
  * - a timeout when it reaches > 50%, marked as stuck
  */
 export const useControlledProgress = () => {
-  const MIN_TIME = 2000; // minimum time to wait before moving to 100
+  const MIN_TIME = 400; // minimum time to wait before moving to 100
   const AFTER_TIME = 300; // extra time to prevent bouncing at reaching 100
 
   const { progress, total } = useProgress();
