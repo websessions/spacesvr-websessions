@@ -94,6 +94,8 @@ export default function LoadingScreen() {
     return () => clearInterval(interval);
   });
 
+  // console.log('progress', progress)
+
   return (
     <Container finished={progress === 100}>
       <Wrapper>
@@ -106,7 +108,8 @@ export default function LoadingScreen() {
           }}
         />
         <Text>
-          {seconds ? Math.round(progress) + "%" : "Experience Loading"}
+          {/* {seconds ? Math.round(progress) + "%" : "Experience Loading"} */}
+          {seconds ? progress + "%" : "Experience Loading"}
         </Text>
       </Wrapper>
     </Container>
